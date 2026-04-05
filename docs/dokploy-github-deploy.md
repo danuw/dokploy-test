@@ -4,6 +4,7 @@ This repository supports two deployment models in Dokploy:
 
 1. GitHub source deployment (Dokploy pulls repo and builds from `Dockerfile`)
 2. Docker image deployment (Dokploy pulls prebuilt image from `ghcr.io`)
+3. Docker Compose deployment (Dokploy reads `docker-compose.yml` from repository)
 
 ## Prerequisites
 
@@ -35,6 +36,25 @@ Notes:
 
 - Dokploy auto deploys on pushes to the selected branch.
 - If you need staging and production from the same repo, create separate Dokploy applications with different branches.
+
+## Option C: Deploy via Docker Compose in Dokploy
+
+Reference: <https://docs.dokploy.com/docs/core/docker-compose>
+
+This repository includes `docker-compose.yml` at the root, so for the Compose screen shown in your screenshot use:
+
+1. Provider: `GitHub`
+2. Repository: this repo
+3. Branch: `main`
+4. Compose Path: `./docker-compose.yml`
+5. Trigger Type: `On Push` (or your preference)
+6. Save, then Deploy
+
+Default service:
+
+- Service name: `app`
+- Internal app port: `3000`
+- Health endpoint: `/health`
 
 ## Option B: Deploy via GHCR Image (GitHub Packages)
 

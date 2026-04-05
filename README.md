@@ -9,6 +9,7 @@ Sample Node.js app to demonstrate deployment on a Dokploy cluster using:
 
 - Simple Express app (`src/server.js`)
 - Dockerfile for containerized deployment (`Dockerfile`)
+- Docker Compose definition for Dokploy Compose source (`docker-compose.yml`)
 - GitHub Actions workflow to publish container image to GHCR (`.github/workflows/publish-ghcr.yml`)
 - GitHub Actions workflow for release/tag image publishing (`.github/workflows/publish-ghcr-release.yml`)
 - Step-by-step Dokploy deployment guide (`docs/dokploy-github-deploy.md`)
