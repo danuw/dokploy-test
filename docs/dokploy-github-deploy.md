@@ -55,6 +55,9 @@ Default service:
 - Service name: `app`
 - Internal app port: `3000`
 - Health endpoint: `/health`
+- No fixed host port mapping in compose (prevents `port is already allocated` conflicts)
+
+If you need direct host-port access anyway, add a `ports` mapping with an unused host port, for example `3001:3000`.
 
 ## Option B: Deploy via GHCR Image (GitHub Packages)
 

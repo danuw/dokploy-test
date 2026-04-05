@@ -49,3 +49,9 @@ Primary Dokploy docs used:
 - <https://docs.dokploy.com/docs/core/github>
 - <https://docs.dokploy.com/docs/core/Docker>
 - <https://docs.dokploy.com/docs/core/registry/ghcr>
+
+## Common Dokploy Compose issue
+
+If deployment logs show `Bind for 0.0.0.0:3000 failed: port is already allocated`, another container already uses host port `3000`.
+
+This repo's `docker-compose.yml` avoids fixed host-port binding to prevent that conflict. Use Dokploy domain/service routing to reach the app on internal port `3000`.
