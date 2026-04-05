@@ -1,0 +1,16 @@
+{
+  "name": "dokploy-sample-app",
+  "version": "1.0.0",
+  "description": "Sample app for Dokploy GitHub and GHCR deployments",
+  "private": true,
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
