@@ -10,6 +10,7 @@ Sample Node.js app to demonstrate deployment on a Dokploy cluster using:
 - Simple Express app (`src/server.js`)
 - Dockerfile for containerized deployment (`Dockerfile`)
 - GitHub Actions workflow to publish container image to GHCR (`.github/workflows/publish-ghcr.yml`)
+- GitHub Actions workflow for release/tag image publishing (`.github/workflows/publish-ghcr-release.yml`)
 - Step-by-step Dokploy deployment guide (`docs/dokploy-github-deploy.md`)
 
 ## Run locally
@@ -28,6 +29,13 @@ On each push to `main`, GitHub Actions builds and pushes images to:
 - `ghcr.io/<github_owner>/dokploy-sample-app:latest`
 - `ghcr.io/<github_owner>/dokploy-sample-app:sha-<commit>`
 - `ghcr.io/<github_owner>/dokploy-sample-app:main`
+
+When you create a Git tag like `v1.2.3` (or publish a GitHub Release for that tag), the release workflow also publishes:
+
+- `ghcr.io/<github_owner>/dokploy-sample-app:1.2.3`
+- `ghcr.io/<github_owner>/dokploy-sample-app:1.2`
+- `ghcr.io/<github_owner>/dokploy-sample-app:1`
+- `ghcr.io/<github_owner>/dokploy-sample-app:v1.2.3`
 
 ## Deploy on Dokploy
 

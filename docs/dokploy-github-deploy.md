@@ -10,7 +10,9 @@ This repository supports two deployment models in Dokploy:
 - A Dokploy instance already connected to your cluster/server
 - This repository pushed to GitHub
 - Main branch: `main`
-- The GitHub Actions workflow in `.github/workflows/publish-ghcr.yml`
+- The GitHub Actions workflows in:
+   - `.github/workflows/publish-ghcr.yml` (main branch images)
+   - `.github/workflows/publish-ghcr-release.yml` (versioned release images)
 
 ## Option A: Deploy via Dokploy GitHub Integration
 
@@ -42,9 +44,14 @@ Reference: <https://docs.dokploy.com/docs/core/Docker>
 
 The workflow `.github/workflows/publish-ghcr.yml` publishes image tags on each push to `main`.
 
+The workflow `.github/workflows/publish-ghcr-release.yml` publishes semantic version tags when you push a tag like `v1.2.3` or publish a GitHub Release.
+
 Expected image name:
 
 - `ghcr.io/<github_owner>/dokploy-sample-app:latest`
+- `ghcr.io/<github_owner>/dokploy-sample-app:1.2.3` (from tag/release)
+- `ghcr.io/<github_owner>/dokploy-sample-app:1.2` (from tag/release)
+- `ghcr.io/<github_owner>/dokploy-sample-app:1` (from tag/release)
 
 ### 2) Configure Dokploy registry credentials for GHCR
 
@@ -68,6 +75,10 @@ Reference: <https://docs.dokploy.com/docs/core/registry/ghcr>
 5. Attach GHCR credentials (username/token).
 6. Set container port to `3000`.
 7. Deploy.
+
+If you prefer immutable releases in production, use a fixed version tag instead of `latest`, for example:
+
+- `ghcr.io/<github_owner>/dokploy-sample-app:1.2.3`
 
 ## Verification
 
